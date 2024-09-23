@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @layer base {
+    :root {
+      --card: 0, 0%, 100%;
+      --card-foreground: 217, 21%, 21%;
+
+      --primary: 227, 100%, 98%; /* #F6F8FF */
+      --primary-lighter: 0, 0%, 100%; /* #FEFEFE */
+      --primary-foreground: 217, 21%, 21%; /* #2B3442 */
+
+      --secondary: 217, 35%, 45%; /* #4B6A9B */
+      --secondary-lighter: 217, 20%, 51%; /* #697C9A */
+
+      --svg: 217, 35%, 45%; /* #4B6A9B */
+      --svg-disabled: 217, 35%, 45%; /* #4B6A9B add 50 opacity*/
+
+      --radius: 0.5rem;
+
+      --btn: 212, 100%, 50%; /* #0079FF */
+      --btn-hover: 212, 100%, 69%; /* #60ABFF */
+
+      --icon-color: 217, 35%, 45%; /* #4B6A9B */
+
+      --fill: 217, 35%, 45%; /* #4B6A9B */
+      --fill-hover: 220, 18%, 16%; /* #222731 */
+    }
+    .dark {
+      --card: 0, 0%, 15%;
+      --card-foreground: 60, 9.1%, 97.8%;
+
+      --primary: 220, 40%, 13%; /* #141D2F */
+      --primary-lighter: 222, 41%, 20%; /* #1E2A47 */
+      --primary-foreground: 0, 0%, 100%; /* #FFFFFF */
+
+      --secondary: 0, 0%, 100%; /* #FFFFFF */
+      --secondary-lighter: 0, 0%, 100%; /* #FFFFFF */
+
+      --svg: 0, 0%, 100%; /* #FFFFFF */
+      --svg-disabled: 0, 0%, 100%; /* #FFFFFF add 50 opacity */
+
+      --no-content: 0, 0%, 100%, 0.5;
+
+      --radius: 1rem;
+
+      --btn: 212, 100%, 50%; /* #0079FF */
+      --btn-hover: 212, 100%, 69%; /* #60ABFF */
+
+      --icon-color: 0, 0%, 100%; /* #FFFFFF */
+      --fill: 0, 0%, 100%; /* #FFFFFF */
+      --fill-hover: 222, 44%, 70%; /* #90A4D4 */
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-primary-foreground font-mono text-[15px] leading-[25px] mt-8 mx-6 sm:mt-36 sm:mx-24;
+  }
+
+  h1 {
+    @apply text-[26px] font-bold leading-[38px];
+  }
+
+  h2 {
+    @apply text-[22px] font-bold leading-[33px];
+  }
+
+  h3 {
+    @apply text-[16px] font-bold leading-[24px];
+  }
+
+  h4 {
+    @apply text-[13px] font-bold leading-[20px];
+  }
+
+  p {
+    @apply text-sm md:text-base;
+  }
+  li {
+    @apply text-sm md:text-base;
+  }
+}
