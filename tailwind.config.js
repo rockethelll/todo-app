@@ -2,33 +2,19 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
+    fontFamily: {
+      josefin: ['Josefin sans', 'sans-serif'],
     },
     extend: {
       colors: {
-        primary: {
+        'primary': {
           DEFAULT: 'hsl(var(--primary), <alpha-value>)',
-          lighter: 'hsl(var(--primary-lighter), <alpha-value>)',
-          foreground: 'hsl(var(--primary-foreground), <alpha-value>)',
         },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary), <alpha-value>)',
-          lighter: 'hsl(var(--secondary-lighter), <alpha-value>)',
-          foreground: 'hsl(var(--secondary-foreground), <alpha-value>)',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card), <alpha-value>)',
-          foreground: 'hsl(var(--card-foreground), <alpha-value>)',
-        },
-        btn: {
-          DEFAULT: 'hsl(var(--btn), <alpha-value>)',
-          hover: 'hsl(var(--btn-hover), <alpha-value>)',
-        },
+        'secondary': 'hsl(var(--secondary), <alpha-value>)',
+        'incomplete': 'hsl(var(--incomplete), <alpha-value>)',
+        'complete': 'hsl(var(--complete), <alpha-value>)',
+        'new-todo': 'hsl(var(--new-todo), <alpha-value>)',
+        'linear': 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
       },
     },
   },

@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState, useMemo, useEffect } from 'react';
 
 type ThemeContextProps = {
   toggleTheme: () => void;
-  darkMode: boolean;
+  isDarkMode: boolean;
 };
 
 type ThemeProviderProps = {
@@ -11,7 +11,7 @@ type ThemeProviderProps = {
 
 export const ThemeContext = createContext<ThemeContextProps>({
   toggleTheme: () => {},
-  darkMode: false,
+  isDarkMode: false,
 });
 
 export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>) {
@@ -26,14 +26,14 @@ export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>
     return false
   };
 
-  const [darkMode, setDarkMode] = useState<boolean>(getInitialTheme);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);
 
   // Toggle the theme and save the preference in localStorage
   const toggleTheme = useMemo(() => {
     return () => {
-      setDarkMode((prevMode) => {
+      setIsDarkMode((prevMode) => {
         const newMode = !prevMode;
-        // localStorage.setItem('darkMode', JSON.stringify(newMode));
+        // localStorage.setItem('isDarkMode', JSON.stringify(newMode));
         return newMode;
       });
     };
@@ -44,15 +44,15 @@ export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>
     const className = 'dark';
     const bodyClass = document.body.classList;
 
-    if (darkMode) {
+    if (isDarkMode) {
       bodyClass.add(className);
     } else {
       bodyClass.remove(className);
     }
-  }, [darkMode]);
+  }, [isDarkMode]);
 
   // Memoize the context value to avoid unnecessary re-renders
-  const contextValue = useMemo(() => ({ toggleTheme, darkMode }), [toggleTheme, darkMode]);
+  const contextValue = useMemo(() => ({ toggleTheme, isDarkMode }), [toggleTheme, isDarkMode]);
 
   return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 }
