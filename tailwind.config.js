@@ -14,7 +14,7 @@ export default {
         'incomplete': 'hsl(var(--incomplete), <alpha-value>)',
         'complete': 'hsl(var(--complete), <alpha-value>)',
         'new-todo': 'hsl(var(--new-todo), <alpha-value>)',
-        'linear': 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
+        'checkbox': 'hsl(var(--checkbox), <alpha-value>)',
       },
     },
   },
