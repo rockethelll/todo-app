@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState, useMemo, useEffect } from 'react';
+import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 
 type ThemeContextProps = {
   toggleTheme: () => void;
@@ -23,7 +23,7 @@ export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>
     // }
     // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     // return prefersDark;
-    return false
+    return false;
   };
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);

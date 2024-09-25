@@ -1,9 +1,11 @@
 import { useEffect, useReducer } from 'react';
-import NewTodoForm from './components/NewTodoForm';
+
 import Header from './components/Header';
-import { reducer } from './utils/reducer';
-import type { Todo } from './utils/reducer';
+import NewTodoForm from './components/NewTodoForm';
 import TodoItem from './components/TodoItem';
+import { TodoContext } from './context/TodoContext';
+import type { Todo } from './utils/reducer';
+import { reducer } from './utils/reducer';
 
 const LOCAL_STORAGE_KEY = 'TODOS';
 
@@ -45,14 +47,32 @@ function App() {
     dispatch({ type: 'DELETE', payload: { id } });
   };
 
+  const toggleTodo = (id: string, completed: boolean) => {
+    dispatch({ type: 'TOGGLE', payload: { id, completed } });
+  };
+
+  const updateTodo = (id: string, text: string) => {
+    dispatch({ type: 'UPDATE', payload: { id, text } });
+  };
+
   return (
-    <div className='w-full h-screen px-6 py-12 bg-primary'>
-      <Header />
-      <NewTodoForm addNewTodo={addNewTodo} />
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} id={todo.id} text={todo.text} deleteTodo={deleteTodo} />
-      ))}
-    </div>
+    <TodoContext.Provider value={{ todos, deleteTodo, toggleTodo, updateTodo }}>
+      <div className='w-full h-screen px-6 py-12 bg-primary'>
+        <Header />
+        <NewTodoForm addNewTodo={addNewTodo} />
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            text={todo.text}
+            completed={todo.completed}
+            deleteTodo={deleteTodo}
+            toggleTodo={toggleTodo}
+            updateTodo={updateTodo}
+          />
+        ))}
+      </div>
+    </TodoContext.Provider>
   );
 }
 

@@ -4,7 +4,7 @@ type NewTodoFormProps = {
   addNewTodo: (text: string) => void;
 };
 
-const NewTodoForm = ({addNewTodo}: NewTodoFormProps) => {
+const NewTodoForm = ({ addNewTodo }: NewTodoFormProps) => {
   const textRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -15,7 +15,7 @@ const NewTodoForm = ({addNewTodo}: NewTodoFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit}>
       <div className='h-12 relative bg-secondary w-[330px] mt-52 border border-gray-900 items-center rounded-md flex justify-around'>
         <input
           type='checkbox'

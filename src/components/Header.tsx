@@ -1,6 +1,7 @@
+import { useContext } from 'react';
+
 import { ThemeContext } from '../context/ToggleThemeContext';
 import ToggleThemeBtn from './ToggleThemeBtn';
-import { useContext } from 'react';
 
 const Header = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -21,3 +22,7 @@ const Header = () => {
 };
 
 export default Header;
+// {
+//   'react-hooks': reactHooks,
+//   'react-refresh': reactRefresh,
+// },
