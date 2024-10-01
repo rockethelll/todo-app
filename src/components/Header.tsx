@@ -7,13 +7,13 @@ const Header = () => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
     <div
-      className={`h-[200px] md:h-[250px] w-full bg-primary bg-no-repeat bg-cover absolute top-0 left-0 px-6 ${
+      className={`h-[200px] md:h-[250px] w-full bg-primary bg-no-repeat bg-cover absolute top-0 left-0 px-6 flex  justify-center ${
         isDarkMode
           ? 'bg-[url("/images/bg-mobile-dark.jpg")] sm:bg-[url("/images/bg-desktop-dark.jpg")]'
           : 'bg-[url("/images/bg-mobile-light.jpg")] sm:bg-[url("/images/bg-desktop-light.jpg")]'
       }`}
     >
-      <div className='flex justify-between pt-12 text-white'>
+      <div className='flex justify-between pt-12 text-white w-[330px] h-5'>
         <h1 className='tracking-[0.5rem] '>TODO</h1>
         <ToggleThemeBtn />
       </div>
@@ -22,7 +22,3 @@ const Header = () => {
 };
 
 export default Header;
-// {
-//   'react-hooks': reactHooks,
-//   'react-refresh': reactRefresh,
-// },

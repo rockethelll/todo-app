@@ -5,24 +5,23 @@
 @tailwind utilities;
 
 @layer base {
-  @layer base {
-    :root {
-      --link-active: 220, 98%, 61%;
-      --primary: 0, 0%, 98%;
-      --secondary: 0, 0%, 100%;
-      --incomplete: 235, 19%, 35%;
-      --complete: 233, 11%, 84%;
-      --new-todo: 236, 9%, 61%;
-      --checkbox: 236, 33%, 92%;
-    }
-    .dark {
-      --primary: 235, 21%, 11%;
-      --secondary: 235, 24%, 19%;
-      --incomplete: 234, 39%, 85%;
-      --complete: 233, 14%, 35%;
-      --new-todo: 234, 11%, 52%;
-      --checkbox: 237, 14%, 26%;
-    }
+  :root {
+    --link-active: 220, 98%, 61%;
+    --separator: 0, 0%, 59%;
+    --primary: 0, 0%, 98%;
+    --secondary: 0, 0%, 100%;
+    --incomplete: 235, 19%, 35%;
+    --complete: 233, 11%, 84%;
+    --new-todo: 236, 9%, 61%;
+    --checkbox: 236, 33%, 92%;
+  }
+  .dark {
+    --primary: 235, 21%, 11%;
+    --secondary: 235, 24%, 19%;
+    --incomplete: 234, 39%, 85%;
+    --complete: 233, 14%, 35%;
+    --new-todo: 234, 11%, 52%;
+    --checkbox: 237, 14%, 26%;
   }
 }
 

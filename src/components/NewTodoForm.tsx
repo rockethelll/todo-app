@@ -1,10 +1,9 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 
-type NewTodoFormProps = {
-  addNewTodo: (text: string) => void;
-};
+import { TodoContext } from '../context/TodoContext';
 
-const NewTodoForm = ({ addNewTodo }: NewTodoFormProps) => {
+const NewTodoForm = () => {
+  const { addNewTodo } = useContext(TodoContext);
   const textRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -15,8 +14,8 @@ const NewTodoForm = ({ addNewTodo }: NewTodoFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='h-12 relative bg-secondary w-[330px] mt-52 border border-gray-900 items-center rounded-md flex justify-around'>
+    <form onSubmit={handleSubmit} className='flex justify-center'>
+      <div className='h-12 relative bg-secondary w-[330px] mt-16 items-center rounded-md flex justify-around'>
         <input
           type='checkbox'
           className="peer relative w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox checked:bg-gradient-to-r checked:from-[hsl(192,100%,67%)] checked:to-[hsl(280,87%,65%)] checked:before:content-['✔'] checked:before:absolute checked:before:left-1 checked:before:top-[1px] checked:before:text-white checked:before:text-[12px]"

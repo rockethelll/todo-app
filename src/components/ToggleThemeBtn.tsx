@@ -12,9 +12,17 @@ const ToggleThemeBtn = () => {
   return (
     <button onClick={toggleTheme}>
       {isDarkMode ? (
-        <img src='/images/icon-sun.svg' alt='Sun logo for dark mode' />
+        <img
+          src='/images/icon-sun.svg'
+          alt='Sun logo for dark mode'
+          className='hover:animate-circle'
+        />
       ) : (
-        <img src='/images/icon-moon.svg' alt='Moon logo for light mode' />
+        <img
+          src='/images/icon-moon.svg'
+          alt='Moon logo for light mode'
+          className='hover:animate-circle'
+        />
       )}
     </button>
   );
