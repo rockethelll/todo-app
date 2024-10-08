@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 
 import { TodoContext } from '../context/TodoContext';
+import useFiltersTodo from '../utils/useFiltersTodo';
 import Filters from './Filters';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
   const { todos } = useContext(TodoContext);
-  const isEmpty = todos.length === 0;
+  const filteredTodos = useFiltersTodo({ todos });
+  const isEmpty = filteredTodos?.length === 0;
 
   return (
     <div className='rounded-lg relative shadow-lg sm:w-[540px] w-[330px] mt-5 overflow-hidden'>
       {!isEmpty ? (
-        todos.map((todo) => (
+        filteredTodos?.map((todo) => (
           <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />
         ))
       ) : (

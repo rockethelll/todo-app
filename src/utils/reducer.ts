@@ -12,7 +12,7 @@ type Action =
 export const reducer = (todos: Todo[], action: Action): Todo[] => {
   switch (action.type) {
     case 'ADD':
-      return [...todos, { id: crypto.randomUUID(), text: action.payload.text, completed: false }];
+      return [{ id: crypto.randomUUID(), text: action.payload.text, completed: false }, ...todos];
 
     case 'DELETE':
       return todos.filter((todo) => todo.id !== action.payload.id);

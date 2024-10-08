@@ -6,7 +6,6 @@ import { FiltersProvider } from './context/FiltersContext';
 import { TodoProvider } from './context/TodoContext';
 
 function App() {
-
   return (
     <TodoProvider>
       <FiltersProvider>

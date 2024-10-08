@@ -7,8 +7,7 @@ const FiltersLink = () => {
 
   const handleFilterClick = (filter: string) => {
     handleActiveFilter(filter);
-    console.log('filter', filter);
-  }
+  };
 
   return (
     <>
