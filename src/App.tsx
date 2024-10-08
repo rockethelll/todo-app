@@ -4,7 +4,6 @@ import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
 import { FiltersProvider } from './context/FiltersContext';
 import { TodoProvider } from './context/TodoContext';
-import { useTodos } from './utils/useTodos';
 
 function App() {
 
