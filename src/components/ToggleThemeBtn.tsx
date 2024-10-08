@@ -10,7 +10,7 @@ const ToggleThemeBtn = () => {
   }
 
   return (
-    <button onClick={toggleTheme}>
+    <button onClick={toggleTheme} data-testid="toggle-theme" className='w-5 sm:w-10'>
       {isDarkMode ? (
         <img
           src='/images/icon-sun.svg'

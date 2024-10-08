@@ -1,26 +1,26 @@
-import { useMemo } from 'react';
-
+import FiltersLink from './components/FiltersLink';
 import Header from './components/Header';
 import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
-import { TodoContext } from './context/TodoContext';
+import { FiltersProvider } from './context/FiltersContext';
+import { TodoProvider } from './context/TodoContext';
 import { useTodos } from './utils/useTodos';
 
 function App() {
-  const { todos, addNewTodo, deleteTodo, toggleTodo } = useTodos();
-  const contextValue = useMemo(
-    () => ({ todos, addNewTodo, deleteTodo, toggleTodo }),
-    [todos, addNewTodo, deleteTodo, toggleTodo],
-  );
 
   return (
-    <TodoContext.Provider value={contextValue}>
-      <div className='flex flex-col items-center w-full h-screen px-6 py-12 transition-all duration-300 bg-primary '>
-        <Header />
-        <NewTodoForm />
-        <TodoList todos={todos} />
-      </div>
-    </TodoContext.Provider>
+    <TodoProvider>
+      <FiltersProvider>
+        <div className='flex flex-col items-center w-full h-screen px-6 py-12 transition-all duration-300 bg-primary '>
+          <Header />
+          <NewTodoForm />
+          <TodoList />
+          <div className='flex h-12 mt-4 relative bg-secondary w-[330px] items-center justify-center sm:hidden rounded-lg shadow-lg'>
+            <FiltersLink />
+          </div>
+        </div>
+      </FiltersProvider>
+    </TodoProvider>
   );
 }
 

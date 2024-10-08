@@ -13,8 +13,8 @@ const Header = () => {
           : 'bg-[url("/images/bg-mobile-light.jpg")] sm:bg-[url("/images/bg-desktop-light.jpg")]'
       }`}
     >
-      <div className='flex justify-between pt-12 text-white w-[330px] h-5'>
-        <h1 className='tracking-[0.5rem] '>TODO</h1>
+      <div className='flex justify-between mt-12 text-white w-[330px] sm:w-[540px] h-5 items-center'>
+        <h1 className='tracking-[0.5rem] font-bold sm:text-4xl'>TODO</h1>
         <ToggleThemeBtn />
       </div>
     </div>

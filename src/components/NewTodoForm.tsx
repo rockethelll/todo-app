@@ -14,8 +14,8 @@ const NewTodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='flex justify-center'>
-      <div className='h-12 relative bg-secondary w-[330px] mt-16 items-center rounded-md flex justify-around'>
+    <form onSubmit={handleSubmit} className='flex justify-center' data-testid='add-new-todo'>
+      <div className='h-12 relative bg-secondary w-[330px] sm:w-[540px] mt-16 items-center rounded-md flex justify-around'>
         <input
           type='checkbox'
           className="peer relative w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox checked:bg-gradient-to-r checked:from-[hsl(192,100%,67%)] checked:to-[hsl(280,87%,65%)] checked:before:content-['✔'] checked:before:absolute checked:before:left-1 checked:before:top-[1px] checked:before:text-white checked:before:text-[12px]"

@@ -14,6 +14,7 @@ export default {
         'new-todo': 'hsl(var(--new-todo), <alpha-value>)',
         'checkbox': 'hsl(var(--checkbox), <alpha-value>)',
         'separator': 'hsl(var(--separator), <alpha-value>)',
+        'link-active': 'hsl(var(--link-active), <alpha-value>)',
       },
       keyframes: {
         circle: {
