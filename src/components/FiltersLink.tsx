@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useContext } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { FiltersContext } from '../context/FiltersContext';
 
@@ -10,28 +11,28 @@ const FiltersLink = () => {
     handleActiveFilter(filter);
   };
 
+  const baseClasses = 'mr-5 text-xs sm:text-sm font-bold hover:text-incomplete';
+
+  // Classes for buttons based on active filter
+  const getButtonClasses = (filter: string) =>
+    twMerge(
+      baseClasses,
+      clsx({
+        'text-link-active': activeFilter === filter,
+        'text-new-todo': activeFilter !== filter,
+      }),
+    );
+
   return (
     <>
-      <button
-        className={clsx('mr-5 text-xs font-bold hover:text-incomplete text-new-todo', {
-          'text-blue-500': activeFilter === 'all',
-        })}
-        onClick={() => handleFilterClick('all')}
-      >
+      <button className={getButtonClasses('all')} onClick={() => handleFilterClick('all')}>
         All
       </button>
-      <button
-        className={clsx('mr-5 text-xs font-bold hover:text-incomplete text-new-todo', {
-          'text-blue-500': activeFilter === 'active',
-        })}
-        onClick={() => handleFilterClick('active')}
-      >
+      <button className={getButtonClasses('active')} onClick={() => handleFilterClick('active')}>
         Active
       </button>
       <button
-        className={clsx('text-xs font-bold hover:text-incomplete text-new-todo', {
-          'text-blue-500': activeFilter === 'completed',
-        })}
+        className={getButtonClasses('completed')}
         onClick={() => handleFilterClick('completed')}
       >
         Completed

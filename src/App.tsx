@@ -16,7 +16,7 @@ function App() {
           <div className='flex h-12 mt-4 relative bg-secondary w-[330px] items-center justify-center sm:hidden rounded-lg shadow-lg'>
             <FiltersLink />
           </div>
-      <div className="mt-12 text-sm text-new-todo sm:text-base">Drag an drop to reorder list</div>
+      <div className="mt-12 text-sm text-new-todo sm:text-sm">Drag an drop to reorder list</div>
         </div>
       </FiltersProvider>
     </TodoProvider>
