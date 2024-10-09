@@ -11,7 +11,7 @@ const FiltersLink = () => {
     handleActiveFilter(filter);
   };
 
-  const baseClasses = 'mr-5 text-xs sm:text-sm font-bold hover:text-incomplete';
+  const baseClasses = 'mr-5 text-xs sm:text-sm font-bold sm:hover:text-incomplete ';
 
   // Classes for buttons based on active filter
   const getButtonClasses = (filter: string) =>
