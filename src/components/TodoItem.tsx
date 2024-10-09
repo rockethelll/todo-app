@@ -30,9 +30,6 @@ const TodoItem = ({ id, text, completed }: Todo) => {
     >
       <input
         type='checkbox'
-        // className={`peer w-[26px] sm:w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center ${
-        //   completed ? checkboxCompleted : ''
-        // }`}
         className={clsx(
           'peer w-[26px] sm:w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center',
           { [checkboxCompleted]: completed },
@@ -45,8 +42,11 @@ const TodoItem = ({ id, text, completed }: Todo) => {
         type='text'
         name='todo'
         className={clsx(
-          'w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete hover:cursor-pointer touch-none select-none',
-          { 'line-through text-complete': completed },
+          'w-full text-xs sm:text-base bg-secondary focus:outline-none hover:cursor-pointer touch-none select-none',
+          {
+            'line-through text-complete': completed,
+            'text-incomplete': !completed,
+          },
         )}
         value={text}
         readOnly
