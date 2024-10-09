@@ -50,7 +50,7 @@ const TodoList: React.FC = () => {
 
   return (
     <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd} sensors={sensors}>
-      <div className='rounded-lg relative shadow-lg sm:w-[540px] w-[330px] mt-5 overflow-hidden'>
+      <div className='rounded-lg relative shadow-lg sm:w-[540px] w-[330px] mt-5 sm:mt-9 overflow-hidden'>
         <SortableContext items={filteredTodos} strategy={verticalListSortingStrategy}>
           {isEmpty ? (
             <div className='flex items-center justify-center w-full h-12 bg-secondary'>
