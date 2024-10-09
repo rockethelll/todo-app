@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useCallback, useMemo, useState } from 'react';
 
 type FiltersContextType = {
   handleActiveFilter: (filter: string) => void;
@@ -17,14 +17,17 @@ export const FiltersContext = createContext<FiltersContextType>({
 export const FiltersProvider = ({ children }: FiltersProviderProps) => {
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const handleActiveFilter = (filter: string) => {
+  const handleActiveFilter = useCallback((filter: string) => {
     setActiveFilter(filter);
-  };
+  }, []);
 
-  const filterValue = {
-    handleActiveFilter,
-    activeFilter,
-  };
+  const filterValue = useMemo(
+    () => ({
+      handleActiveFilter,
+      activeFilter,
+    }),
+    [handleActiveFilter, activeFilter],
+  );
 
   return <FiltersContext.Provider value={filterValue}>{children}</FiltersContext.Provider>;
 };

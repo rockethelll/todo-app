@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useContext } from 'react';
 
 import { FiltersContext } from '../context/FiltersContext';
@@ -12,25 +13,25 @@ const FiltersLink = () => {
   return (
     <>
       <button
-        className={`mr-5 text-xs font-bold ${
-          activeFilter === 'all' ? 'text-blue-500' : ''
-        } hover:text-incomplete text-new-todo`}
+        className={clsx('mr-5 text-xs font-bold hover:text-incomplete text-new-todo', {
+          'text-blue-500': activeFilter === 'all',
+        })}
         onClick={() => handleFilterClick('all')}
       >
         All
       </button>
       <button
-        className={`mr-5 text-xs font-bold ${
-          activeFilter === 'active' ? 'text-blue-500' : ''
-        } hover:text-incomplete text-new-todo`}
+        className={clsx('mr-5 text-xs font-bold hover:text-incomplete text-new-todo', {
+          'text-blue-500': activeFilter === 'active',
+        })}
         onClick={() => handleFilterClick('active')}
       >
         Active
       </button>
       <button
-        className={`text-xs font-bold ${
-          activeFilter === 'completed' ? 'text-blue-500' : ''
-        } hover:text-incomplete text-new-todo`}
+        className={clsx('text-xs font-bold hover:text-incomplete text-new-todo', {
+          'text-blue-500': activeFilter === 'completed',
+        })}
         onClick={() => handleFilterClick('completed')}
       >
         Completed
