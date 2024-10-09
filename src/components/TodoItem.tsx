@@ -1,3 +1,5 @@
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { useContext, useState } from 'react';
 
 import { TodoContext } from '../context/TodoContext';
@@ -7,6 +9,13 @@ const checkboxCompleted =
   "checked:bg-gradient-to-r checked:from-[hsl(192,100%,67%)] checked:to-[hsl(280,87%,65%)] checked:before:content-['✔']  checked:before:text-white checked:before:text-[12px]";
 
 const TodoItem = ({ id, text, completed }: Todo) => {
+  // For drag and drop
+  const { setNodeRef, attributes, listeners, transform, transition } = useSortable({ id });
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const { deleteTodo, toggleTodo } = useContext(TodoContext);
 
@@ -15,6 +24,8 @@ const TodoItem = ({ id, text, completed }: Todo) => {
       className='h-12 relative bg-secondary w-[330px] sm:w-[540px] items-center flex justify-around border-b border-complete last:border-b-0'
       onMouseEnter={() => setShowDeleteButton(true)}
       onMouseLeave={() => setShowDeleteButton(false)}
+      ref={setNodeRef}
+      style={style}
     >
       <input
         type='checkbox'
@@ -28,11 +39,13 @@ const TodoItem = ({ id, text, completed }: Todo) => {
       <input
         type='text'
         name='todo'
-        className={`w-full text-xs bg-secondary focus:outline-none text-new-todo hover:cursor-pointer ${
+        className={`w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete hover:cursor-pointer touch-none select-none ${
           completed ? 'line-through text-complete' : ''
         } `}
         value={text}
         readOnly
+        {...attributes}
+        {...listeners}
       />
       <button
         onClick={() => deleteTodo(id)}

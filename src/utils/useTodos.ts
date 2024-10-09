@@ -6,10 +6,10 @@ import { reducer } from './reducer';
 const LOCAL_STORAGE_KEY = 'TODOS';
 
 const seedTodos = [
-  { id: '1', text: 'Test todo 1', completed: false },
-  { id: '2', text: 'Complete online JavaScript course', completed: true },
-  { id: '3', text: 'Jog around the park 3x', completed: false },
-  { id: '4', text: '10 minutes meditation', completed: false },
+  { id: 1, text: 'Read at least 10 pages', completed: false },
+  { id: 2, text: 'Complete online JavaScript course', completed: true },
+  { id: 3, text: 'Jog around the park 3x', completed: false },
+  { id: 4, text: '10 minutes meditation', completed: false },
 ];
 
 export const useTodos = () => {
@@ -33,17 +33,21 @@ export const useTodos = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
-  const addNewTodo = (text: string) => {
-    dispatch({ type: 'ADD', payload: { text } });
+  const addNewTodo = (text: string, completed: boolean) => {
+    dispatch({ type: 'ADD', payload: { text, completed } });
   };
 
-  const deleteTodo = (id: string) => {
+  const deleteTodo = (id: number) => {
     dispatch({ type: 'DELETE', payload: { id } });
   };
 
-  const toggleTodo = (id: string, completed: boolean) => {
+  const toggleTodo = (id: number, completed: boolean) => {
     dispatch({ type: 'TOGGLE', payload: { id, completed } });
   };
 
-  return { todos, addNewTodo, deleteTodo, toggleTodo };
+  const setTodos = (newTodos: Todo[]) => {
+    dispatch({ type: 'SET', payload: { todos: newTodos } });
+  };
+
+  return { todos, addNewTodo, deleteTodo, toggleTodo, setTodos };
 };
