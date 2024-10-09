@@ -20,6 +20,11 @@ const TodoItem = ({ id, text, completed }: Todo) => {
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const { deleteTodo, toggleTodo } = useContext(TodoContext);
 
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    deleteTodo(id);
+  }
+
   return (
     <form
       className='h-12 relative bg-secondary w-[330px] sm:w-[540px] items-center flex justify-around border-b border-complete last:border-b-0'
@@ -54,7 +59,7 @@ const TodoItem = ({ id, text, completed }: Todo) => {
         {...listeners}
       />
       <button
-        onClick={() => deleteTodo(id)}
+        onClick={handleDelete}
         data-testid='delete-todo'
         className={`${showDeleteButton ? 'opacity-100' : 'opacity-0'}`}
       >

@@ -17,13 +17,12 @@ export const ThemeContext = createContext<ThemeContextProps>({
 export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>) {
   // Retrieve initial theme from localStorage or prefers-color-scheme
   const getInitialTheme = () => {
-    // const savedTheme = localStorage.getItem('darkMode');
-    // if (savedTheme !== null) {
-    //   return JSON.parse(savedTheme);
-    // }
-    // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // return prefersDark;
-    return false;
+    const savedTheme = localStorage.getItem('darkMode');
+    if (savedTheme !== null) {
+      return JSON.parse(savedTheme);
+    }
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark;
   };
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme);
@@ -33,7 +32,7 @@ export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>
     return () => {
       setIsDarkMode((prevMode) => {
         const newMode = !prevMode;
-        // localStorage.setItem('isDarkMode', JSON.stringify(newMode));
+        localStorage.setItem('isDarkMode', JSON.stringify(newMode));
         return newMode;
       });
     };
