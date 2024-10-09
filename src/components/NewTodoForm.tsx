@@ -14,6 +14,7 @@ const NewTodoForm = () => {
 
     textRef.current.value = '';
     setCompleted(false);
+    textRef.current.focus();
   };
 
   const handleCheckboxChange = () => {
@@ -27,11 +28,17 @@ const NewTodoForm = () => {
           type='checkbox'
           checked={completed}
           onChange={handleCheckboxChange}
+          aria-label='Mark todo as completed'
           className="peer relative w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox checked:bg-gradient-to-r checked:from-[hsl(192,100%,67%)] checked:to-[hsl(280,87%,65%)] checked:before:content-['✔'] checked:before:absolute checked:before:left-1 checked:before:top-[1px] checked:before:text-white checked:before:text-[12px]"
         />
+        <label htmlFor='todo-input' className='sr-only'>
+          New todo
+        </label>{' '}
+        {/* Label for the text input */}
         <input
           type='text'
           name='todo'
+          id='todo-input'
           className='w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete placeholder:text-new-todo'
           placeholder='Create a new todo...'
           ref={textRef}

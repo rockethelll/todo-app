@@ -6,7 +6,7 @@ import ToggleThemeBtn from './ToggleThemeBtn';
 const Header = () => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
-    <div
+    <header
       className={`h-[200px] sm:h-[300px] w-full bg-primary bg-no-repeat bg-cover absolute top-0 left-0 px-6 flex  justify-center ${
         isDarkMode
           ? 'bg-[url("/images/bg-mobile-dark.jpg")] sm:bg-[url("/images/bg-desktop-dark.jpg")]'
@@ -17,7 +17,7 @@ const Header = () => {
         <h1 className='tracking-[0.5rem] font-bold sm:text-4xl'>TODO</h1>
         <ToggleThemeBtn />
       </div>
-    </div>
+    </header>
   );
 };
 

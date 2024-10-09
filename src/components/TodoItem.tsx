@@ -7,7 +7,7 @@ import { TodoContext } from '../context/TodoContext';
 import { Todo } from '../utils/type';
 
 const checkboxCompleted =
-  "checked:bg-gradient-to-r checked:from-[hsl(192,100%,67%)] checked:to-[hsl(280,87%,65%)] checked:before:content-['✔']  checked:before:text-white checked:before:text-[12px]";
+  "checked:bg-gradient-to-r checked:from-[hsl(192,100%,67%)] checked:to-[hsl(280,87%,65%)] checked:before:content-['✔'] checked:before:text-white checked:before:text-[12px]";
 
 const TodoItem = ({ id, text, completed }: Todo) => {
   // For drag and drop
@@ -23,7 +23,7 @@ const TodoItem = ({ id, text, completed }: Todo) => {
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     deleteTodo(id);
-  }
+  };
 
   return (
     <form
@@ -36,15 +36,20 @@ const TodoItem = ({ id, text, completed }: Todo) => {
       <input
         type='checkbox'
         className={clsx(
-          'peer w-[26px] sm:w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center',
+          'peer w-[20px] sm:w-5 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center',
           { [checkboxCompleted]: completed },
         )}
         onChange={(e) => toggleTodo(id, e.target.checked)}
         checked={completed}
         data-testid='toggle-todo'
+        aria-label={`Mark todo "${text}" as completed`}
       />
+      <label htmlFor={`todo-${id}`} className='sr-only'>
+        Todo
+      </label>{' '}
       <input
         type='text'
+        id={`todo-${id}`}
         name='todo'
         className={clsx(
           'w-full text-xs sm:text-base bg-secondary focus:outline-none hover:cursor-pointer touch-none select-none',
@@ -62,6 +67,7 @@ const TodoItem = ({ id, text, completed }: Todo) => {
         onClick={handleDelete}
         data-testid='delete-todo'
         className={`${showDeleteButton ? 'opacity-100' : 'opacity-0'}`}
+        aria-label={`Delete todo "${text}"`}
       >
         <img src='/images/icon-cross.svg' alt='Delete todo' className='mr-5' />
       </button>
