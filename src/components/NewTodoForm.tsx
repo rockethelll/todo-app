@@ -22,7 +22,7 @@ const NewTodoForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className='flex justify-center' data-testid='add-new-todo'>
-      <div className='h-12 relative bg-secondary w-[330px] sm:w-[540px] mt-16 items-center rounded-md flex justify-around'>
+      <div className='h-12 sm:h-16 relative bg-secondary w-[330px] sm:w-[540px] mt-16 items-center rounded-md flex justify-around'>
         <input
           type='checkbox'
           checked={completed}

@@ -27,7 +27,7 @@ const TodoItem = ({ id, text, completed }: Todo) => {
 
   return (
     <form
-      className='h-12 relative bg-secondary w-[330px] sm:w-[540px] items-center flex justify-around border-b border-complete last:border-b-0'
+      className='h-12 sm:h-16 relative bg-secondary w-[330px] sm:w-[540px] items-center flex justify-around border-b border-complete last:border-b-0'
       onMouseEnter={() => setShowDeleteButton(true)}
       onMouseLeave={() => setShowDeleteButton(false)}
       ref={setNodeRef}

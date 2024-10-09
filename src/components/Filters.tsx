@@ -17,7 +17,7 @@ const Filters = () => {
   };
 
   return (
-    <div className='h-12 relative bg-secondary w-[330px] sm:w-[540px] items-center flex justify-between'>
+    <div className='h-12 sm:h-16 relative bg-secondary w-[330px] sm:w-[540px] items-center flex justify-between'>
       <p className='ml-5 text-xs sm:text-sm text-new-todo'>
         {itemsLeft} {itemsLeft < 2 ? 'item' : 'items'} left
       </p>
