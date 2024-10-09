@@ -1,5 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import clsx from 'clsx';
 import { useContext, useState } from 'react';
 
 import { TodoContext } from '../context/TodoContext';
@@ -29,9 +30,13 @@ const TodoItem = ({ id, text, completed }: Todo) => {
     >
       <input
         type='checkbox'
-        className={`peer w-[26px] sm:w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center ${
-          completed ? checkboxCompleted : ''
-        }`}
+        // className={`peer w-[26px] sm:w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center ${
+        //   completed ? checkboxCompleted : ''
+        // }`}
+        className={clsx(
+          'peer w-[26px] sm:w-6 h-5 ml-5 mr-3 border rounded-full appearance-none cursor-pointer border-checkbox flex justify-center items-center',
+          { [checkboxCompleted]: completed },
+        )}
         onChange={(e) => toggleTodo(id, e.target.checked)}
         checked={completed}
         data-testid='toggle-todo'
@@ -39,9 +44,10 @@ const TodoItem = ({ id, text, completed }: Todo) => {
       <input
         type='text'
         name='todo'
-        className={`w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete hover:cursor-pointer touch-none select-none ${
-          completed ? 'line-through text-complete' : ''
-        } `}
+        className={clsx(
+          'w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete hover:cursor-pointer touch-none select-none',
+          { 'line-through text-complete': completed },
+        )}
         value={text}
         readOnly
         {...attributes}
