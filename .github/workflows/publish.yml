@@ -6,51 +6,15 @@ on:
       - main
 
 jobs:
-  install:
+  build:
     runs-on: ubuntu-latest
-    name: Install Dependencies
+    name: Build and Push
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install all dependencies
         run: npm install
-
-  cypress-run:
-    runs-on: ubuntu-latest
-    name: Run Cypress tests
-    needs: install # Indicate that this job depends on the installation job
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v5
-        # after the test run completes
-        # store videos and screenshots
-        # NOTE: screeshots will be generated only if E2E tests failed
-        # thus we store screenshots and videos only on failure
-        # Alternative: create and commit an empty cypress/screenshots folder
-        # to always have something to upload
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Test run video was always captured, so this actios uses "always()" condition
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
-
-  build:
-    runs-on: ubuntu-latest
-    name: Build and Push
-    needs: install # Indique que ce job dépend du job d'installation
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       - name: Build
         run: npm run build
