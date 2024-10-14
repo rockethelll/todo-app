@@ -19,6 +19,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Step to run Cypress tests
+      - name: Run Cypress tests
+        run: |
+          npm install cypress
+          ./node_modules/.bin/cypress run
+        env:
+          CYPRESS_BASE_URL: http://localhost:5173
+
       # Step to create the branch if it doesn't exist
       - name: Ensure build branch exists
         run: |
