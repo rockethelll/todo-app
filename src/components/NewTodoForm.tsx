@@ -42,6 +42,7 @@ const NewTodoForm = () => {
           className='w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete placeholder:text-new-todo'
           placeholder='Create a new todo...'
           ref={textRef}
+          data-testid='new-todo-input'
         />
       </div>
     </form>

@@ -7,12 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cy:open": "cypress open",
+    "cypress:clear-cache": "cypress cache clear",
+    "test": "NODE_NO_WARNINGS=1 jest --watch"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@testing-library/user-event": "^14.5.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -20,12 +24,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/node": "^22.7.5",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
+    "cypress": "^13.15.0",
     "eslint": "^9.11.1",
     "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
     "eslint-plugin-react-refresh": "^0.4.12",

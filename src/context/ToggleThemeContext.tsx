@@ -17,6 +17,13 @@ export const ThemeContext = createContext<ThemeContextProps>({
 export default function ThemeProvider({ children }: Readonly<ThemeProviderProps>) {
   // Retrieve initial theme from localStorage or prefers-color-scheme
   const getInitialTheme = () => {
+    const isDevEnvironment = process.env.NODE_ENV === 'development';
+
+    // Force light mode in development for testing purposes
+    if (isDevEnvironment) {
+      return false; 
+    }
+
     const savedTheme = localStorage.getItem('darkMode');
     if (savedTheme !== null) {
       return JSON.parse(savedTheme);
