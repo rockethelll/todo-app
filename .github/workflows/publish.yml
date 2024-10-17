@@ -16,6 +16,10 @@ jobs:
       - name: Install all dependencies
         run: npm install
 
+      # Step to run tests
+      - name: Test
+        run: npm run test
+
       - name: Build
         run: npm run build
 

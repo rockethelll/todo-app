@@ -2,6 +2,12 @@ import { useContext, useRef, useState } from 'react';
 
 import { TodoContext } from '../context/TodoContext';
 
+export const clearInputAndFocus = (textRef: React.RefObject<HTMLInputElement>) => {
+  if (textRef.current) {
+    textRef.current.value = '';
+    textRef.current.focus();
+  }
+};
 const NewTodoForm = () => {
   const [completed, setCompleted] = useState(false);
   const { addNewTodo } = useContext(TodoContext);
@@ -9,12 +15,15 @@ const NewTodoForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!textRef.current || textRef.current.value === '') return;
-    addNewTodo(textRef.current.value, completed);
+    const trimmedTodo = textRef.current?.value.trim();
+    if (!trimmedTodo) {
+      clearInputAndFocus(textRef);
+      return;
+    }
+    addNewTodo(trimmedTodo, completed);
 
-    textRef.current.value = '';
+    clearInputAndFocus(textRef);
     setCompleted(false);
-    textRef.current.focus();
   };
 
   const handleCheckboxChange = () => {
@@ -25,6 +34,7 @@ const NewTodoForm = () => {
     <form onSubmit={handleSubmit} className='flex justify-center' data-testid='add-new-todo'>
       <div className='h-12 sm:h-16 relative bg-secondary w-[330px] sm:w-[540px] mt-16 sm:mt-[100px] items-center rounded-md flex justify-around'>
         <input
+          data-testid='toggle-new-todo'
           type='checkbox'
           checked={completed}
           onChange={handleCheckboxChange}
@@ -42,7 +52,6 @@ const NewTodoForm = () => {
           className='w-full text-xs sm:text-base bg-secondary focus:outline-none text-incomplete placeholder:text-new-todo'
           placeholder='Create a new todo...'
           ref={textRef}
-          data-testid='new-todo-input'
         />
       </div>
     </form>
